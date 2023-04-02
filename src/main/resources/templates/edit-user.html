@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update user</title>
+</head>
+
+<body>
+
+<h2 th:align="center">Enter updated user data</h2>
+
+<br>
+
+<div>
+    <th:block>
+        <form th:method="PATCH" th:action="@{/users/{id}(id=${user.getId()})}" th:object="${user}">
+            <table th:border="0" th:align="center" th:width="500" th:height="50">
+                <tbody>
+                <tr th:align="left">
+                    <td>
+                        <label th:for="firstName">Name: </label>
+                    </td>
+                    <td>
+                        <input th:type="text" th:field="*{firstName}" id="firstName"/>
+                    </td>
+                    <td>
+                        <div style="color: red" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">
+                            Name error
+                        </div>
+                    </td>
+                </tr>
+                <tr th:align="left">
+                    <td>
+                        <label th:for="lastName">Surname: </label>
+                    </td>
+                    <td>
+                        <input th:type="text" th:field="*{lastName}" id="lastName"/>
+                    </td>
+                    <td>
+                        <div style="color: red" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">
+                            Surname error
+                        </div>
+                    </td>
+                </tr>
+                <tr th:align="left">
+                    <td>
+                        <label th:for="age">Age: </label>
+                    </td>
+                    <td>
+                        <input th:type="text" th:field="*{age}" id="age"/>
+                    </td>
+                    <td>
+                        <div style="color: red" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">
+                            Age error
+                        </div>
+                    </td>
+                </tr>
+                <tr th:align="left">
+                    <td>
+                        <label th:for="email">Email: </label>
+                    </td>
+                    <td>
+                        <input th:type="text" th:field="*{email}" id="email"/>
+                    </td>
+                    <td>
+                        <div style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                            Email error
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <br>
+
+            <table th:border="0" th:align="center" th:width="250" th:height="50">
+                <tbody>
+                <tr th:align="center">
+                    <td>
+                        <input th:type="submit" value="Update">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+    </th:block>
+</div>
+
+</body>
+
+</html>

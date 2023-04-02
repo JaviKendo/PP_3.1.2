@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+
+<body>
+
+<h2 th:align="center">Users</h2>
+
+<br>
+
+<div>
+    <th:block>
+        <table th:border="5" th:width="500" th:height="300" th:align="center" th:cellspacing="5" th:bgcolor="bisque">
+            <thead>
+            <tr th:bgcolor="Plum">
+                <th>Profile</th>
+                <th>Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}" th:align="center" th:bgcolor="LightYellow">
+                <td>
+                    <a th:href="@{/users/{id}(id=${user.getId()})}" th:text="View_Profile">VALUE</a>
+                </td>
+                <td th:text="${user.getFirstName()}"></td>
+                <td th:text="${user.getLastName()}"></td>
+                <td th:text="${user.getAge()}"></td>
+                <td th:text="${user.getEmail()}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <br>
+
+        <form th:method="GET" th:action="@{/users/addNewUser}" th:align="center">
+            <input type="submit" value="Add user"/>
+        </form>
+
+    </th:block>
+</div>
+
+</body>
+
+</html>
